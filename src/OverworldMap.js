@@ -21,7 +21,7 @@ class OverworldMap{
 
 window.OverworldMaps = {
 	map1:{
-		lowerSrc:"assets/img/ocean.png",
+		lowerSrc:"assets/img/l1.png",
 		upperSrc:"assets/img/fish.png",
 		gameObjects:{
 			fish:new MovingObject({
@@ -29,11 +29,11 @@ window.OverworldMaps = {
 				y:utils.withGrid(6),
 				isPlayerControlled: true,
 			}),
-			turtle: new MovingObject({
+			/*turtle: new MovingObject({
 				x:utils.withGrid(1),
 				y:utils.withGrid(4),
 				src:"assets/img/turtle.png"
-			})
+			})*/
 		}
 	}
 }
