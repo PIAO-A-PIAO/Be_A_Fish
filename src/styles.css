@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box;
 }
+
 body{
     background: #333;
     padding: 0;
@@ -18,6 +19,6 @@ body{
 }
 
 .game-container canvas{
-    transform: scale(1.5625) translate(180px, 90px);
+    transform: scale(3.125) translate(340px, 170px);
     image-rendering: pixelated;
 }

@@ -1,21 +1,42 @@
-class Overworld{
-    constructor(config){
-        this.element = config.element;
-        this.canvas = this.element.querySelector(".game-canvas");
-        this.ctx = this.canvas.getContext("2d");
+class Overworld {
+   constructor(config) {
+       this.element = config.element;
+       this.canvas = this.element.querySelector(".game-canvas");
+       this.ctx = this.canvas.getContext("2d");
+       this.map = null;
+ }
+
+    startGameLoop(){
+        const step = () => {
+
+            this.map.drawLowerImage(this.ctx);
+
+            Object.values(this.map.gameObjects).forEach(object => {
+                object.update({
+                    arrow: this.directionInput.direction
+                })
+                object.sprite.draw(this.ctx);
+            })
+
+            this.map.drawUpperImage(this.ctx);
+
+            requestAnimationFrame(()=>{
+                step();
+            })
+        }
+        step();
     }
 
     init(){
-        const bg = new Image();
-        bg.src = "assets/img/ocean.png";
-        bg.onload = () =>{
-            this.ctx.drawImage(bg, 0, 0)
-        }
 
-        const fish = new Image();
-        fish.src = "assets/img/fish.png"
-        fish.onload = () => {
-            this.ctx.drawImage(fish, 0, 0, 64, 64, 0, 0, 64, 64);
-        }
+        this.map = new OverworldMap(window.OverworldMaps.map1);
+        
+        this.directionInput = new DirectionInput();
+        this.directionInput.init();
+
+        this.startGameLoop();
+
+
     }
+
 }
